@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "set -e; tsc; parcel index.html",
-    "test": "parcel test/test.html"
+    "test": "parcel test/test.html --port 3456"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
+    "less": "^3.11.1",
     "mocha": "^7.1.1",
     "parcel-bundler": "^1.12.4",
     "ts-node": "^8.8.2",
