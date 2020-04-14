@@ -38,7 +38,7 @@ export class BlockGrid {
     return neighbouringCoords.map(([x,y]) => {
       const col = this.grid[x];
       return col ? col[y] || null : null
-    }).filter(block => block)
+    }).filter(block => !!block)
   }
 
   getSameColourNeighbours(block: Block): Block[] {
@@ -78,7 +78,7 @@ export class BlockGrid {
     }
     const columns = neighbours.map(block => block.x);
     [...neighbours, block].forEach(block => block.clear());
-    [...columns, block.x].forEach(column => this.reorderColumn(this.grid[column]));
+    [...columns].forEach(column => this.reorderColumn(this.grid[column]));
     this.render();
   }
 
@@ -92,8 +92,6 @@ export class BlockGrid {
   }
 
   reorderColumn(column: Column) {
-    // const clickedBlocks = column.filter(block => !block.clickable);
-    // const unClickedBlocks = column.filter(block => block.clickable);
     const reordered = column.sort((a, b) => Number(b.clickable) - Number(a.clickable));
     reordered.forEach((block, index) => block.y = index);
     this.grid[column[0].x] = reordered;
