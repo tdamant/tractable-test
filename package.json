@@ -1,0 +1,22 @@
+{
+  "name": "front-end-dev-test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "set -e; tsc; parcel index.html",
+    "test": "parcel test/test.html"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "parcel-bundler": "^1.12.4",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "natives": "^1.1.6"
+  }
+}

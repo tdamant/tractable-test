@@ -1,0 +1,13 @@
+{
+  "include": ["app/typescript/*"],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es5",
+    "noEmit": true,
+    "module": "commonjs",
+    "lib": [
+      "es2019",
+      "dom"
+    ]
+  }
+}
