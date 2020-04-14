@@ -5,25 +5,6 @@ import {Block} from "../app/typescript/Block";
 describe("BlockGrid", function () {
   const blockGrid = new BlockGrid();
 
-  describe("clearBlock", () => {
-    it('should turn the block white and make it not clickable', () => {
-      const block = new Block(2, 4);
-      blockGrid.clearBlock(block);
-      expect(block.colour).to.eql('white');
-      expect(block.clickable).to.eql(false)
-    });
-    it('should be idempotent', () => {
-      const block = new Block(2, 4);
-      blockGrid.clearBlock(block);
-      const {x: oldX, y: oldY, colour: oldColour, clickable: oldClickable} = block;
-      blockGrid.clearBlock(block);
-      expect(block.x).to.eql(oldX);
-      expect(block.y).to.eql(oldY);
-      expect(block.colour).to.eql(oldColour);
-      expect(block.clickable).to.eql(oldClickable)
-    });
-  });
-
   describe('getNeighbours', () => {
     it('returns the neighbours to either side and above', () => {
       const block = new Block(2, 2);
@@ -140,7 +121,7 @@ describe("BlockGrid", function () {
         topBlock,
       ];
       const blockGrid = new BlockGrid([column]);
-      blockGrid.clearBlock(bottomBlock);
+      bottomBlock.clear();
       blockGrid.reorderColumn(column);
       expect(blockGrid.grid[0]).to.eql([middleBlock, topBlock, bottomBlock])
     });

@@ -45,11 +45,6 @@ export class BlockGrid {
     return this.getNeighbours(block).filter(neighbour => block.colour === neighbour.colour);
   }
 
-  clearBlock(block: Block) {
-    block.colour = 'white';
-    block.clickable = false;
-  }
-
   render(grid = document.querySelector('#gridEl') as Element) {
     let el = grid.cloneNode(false);
     grid.parentNode.replaceChild(el, grid);
@@ -82,7 +77,7 @@ export class BlockGrid {
       return
     }
     const columns = neighbours.map(block => block.x);
-    [...neighbours, block].forEach(block => this.clearBlock(block));
+    [...neighbours, block].forEach(block => block.clear());
     [...columns, block.x].forEach(column => this.reorderColumn(this.grid[column]));
     this.render();
   }
